@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150304021244) do
+ActiveRecord::Schema.define(version: 20150305111803) do
 
   create_table "zombies", force: :cascade do |t|
     t.string   "name"
@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(version: 20150304021244) do
     t.integer  "age"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "email"
+    t.boolean  "rotting",    default: false
   end
 
 end

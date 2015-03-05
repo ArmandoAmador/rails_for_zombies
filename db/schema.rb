@@ -11,6 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150304021503) do
+ActiveRecord::Schema.define(version: 20150304021244) do
+
+  create_table "zombies", force: :cascade do |t|
+    t.string   "name"
+    t.text     "bio"
+    t.integer  "age"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

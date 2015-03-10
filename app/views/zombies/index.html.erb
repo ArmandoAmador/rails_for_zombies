@@ -2,14 +2,16 @@
 
 <h1>Listing Zombies</h1>
 
-<% @zombies.each do |zombie| %>
-  <%= div_for zombie do %>
-    <%= link_to("Zombie #{zombie.name}", zombie) %>
-    <div class="actions">
-      <%= link_to 'edit', edit_zombie_path(zombie) %>
-      <%= link_to 'delete', zombie, method: :delete, remote: true %>
-    </div>
-  <% end %>
-<% end %>
+<div id="zombies">
+  <%= render @zombies %>
+</div>
 
-<%= link_to 'New Zombie', new_zombie_path %>
+<%= form_for(Zombie.new, remote:true) do |f| %>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

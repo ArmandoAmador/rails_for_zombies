@@ -2,32 +2,14 @@
 
 <h1>Listing Zombies</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Bio</th>
-      <th>Age</th>
-      <th>Flavor</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @zombies.each do |zombie| %>
-      <tr>
-        <td><%= zombie.name %></td>
-        <td><%= zombie.bio %></td>
-        <td><%= zombie.age %></td>
-        <td><%= zombie.brain.flavor unless zombie.brain.nil? %></td>
-        <td><%= link_to 'Show', zombie %></td>
-        <td><%= link_to 'Edit', edit_zombie_path(zombie) %></td>
-        <td><%= link_to 'Destroy', zombie, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
+<% @zombies.each do |zombie| %>
+  <%= div_for zombie do %>
+    <%= link_to("Zombie #{zombie.name}", zombie) %>
+    <div class="actions">
+      <%= link_to 'edit', edit_zombie_path(zombie) %>
+      <%= link_to 'delete', zombie, method: :delete, remote: true %>
+    </div>
+  <% end %>
+<% end %>
 
 <%= link_to 'New Zombie', new_zombie_path %>
